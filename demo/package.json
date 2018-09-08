@@ -1,0 +1,29 @@
+{
+  "name": "redux-form-builder-demo",
+  "version": "1.0.0",
+  "description": "form builder demo",
+  "license": "MIT",
+  "scripts": {
+      "build": "webpack",
+      "start": "webpack-dev-server"
+  },
+  "dependencies": {
+    "redux-form-builder": "^1.0",
+    "react-dom": "^15.4.2",
+    "react": "^15.4.2",
+    "redux": "3.6.0",
+    "react-redux": "^5.0.6",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "html-webpack-plugin": "^2.30.1",
+    "path": "^0.12.7",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
