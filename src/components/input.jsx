@@ -90,10 +90,10 @@ class RadioButtonGroupInput extends React.Component {
 
 export {
   CheckboxInput,
+  DateInput,
   HiddenInput,
   RadioButtonGroupInput,
   SelectInput,
   TextAreaInput,
-  TextInput,
-  DateInput
+  TextInput
 }
