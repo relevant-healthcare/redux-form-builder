@@ -14,6 +14,7 @@ import Form, {
   TextInput,
   UnlabeledControl }
 from '../../build/index.js';
+import Greeter from './greeter.jsx'
 
 class MyForm extends React.Component {
   render() {
@@ -78,8 +79,14 @@ class MyForm extends React.Component {
             for="notes"
             control={UnlabeledControl}
             input={TextAreaInput}/>
+          <Greeter/>
         </div>
       </Fields>
+      <div>
+        <input
+          type="submit"
+          value="Save"/>
+      </div>
     </Form>
   }
 }

@@ -16,6 +16,7 @@ import {
   TextAreaInput,
   TextInput
 } from './components/input'
+import formScopedStateWrapper from './containers/form_scoped_state_wrapper'
 
 export default Form
 export {
@@ -24,6 +25,7 @@ export {
   Field,
   Fields,
   FormsReducer,
+  formScopedStateWrapper,
   HiddenControl,
   HiddenInput,
   LabeledControl,
