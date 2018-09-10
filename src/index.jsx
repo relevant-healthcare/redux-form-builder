@@ -1,12 +1,34 @@
 import Form from './components/form'
 import FormsReducer from './reducers/index'
-
-Form.reducer = FormsReducer;
+import {
+  HiddenControl,
+  LabeledControl,
+  UnlabeledControl
+} from './components/control'
+import Field from './components/field'
+import Fields from './components/fields'
+import {
+  CheckboxInput,
+  HiddenInput,
+  RadioButtonGroupInput,
+  SelectInput,
+  TextAreaInput,
+  TextInput,
+  DateInput
+} from './components/input'
 
 export default Form
-
-// import React from 'react'
-
-// export default function() {
-//   return(<div>Hello!!</div>)
-// }
+export {
+  CheckboxInput,
+  HiddenInput,
+  RadioButtonGroupInput,
+  SelectInput,
+  TextAreaInput,
+  TextInput,
+  DateInput,
+  HiddenControl,
+  LabeledControl,
+  UnlabeledControl,
+  Field,
+  Fields,
+  FormsReducer }

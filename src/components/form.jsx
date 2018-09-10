@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import fieldSetWrapper from './field_set_wrapper'
+import fieldSetWrapper from '../containers/field_set_wrapper'
 import formScopedStateWrapper from '../containers/form_scoped_state_wrapper'
 import { setFormObject } from '../actions/index'
 import _ from 'lodash'

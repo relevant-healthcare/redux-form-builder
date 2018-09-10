@@ -1,6 +1,6 @@
 import React from 'react'
 import update from 'react/lib/update'
-import formContextWrapper from '../components/form_context_wrapper'
+import formContextWrapper from './form_context_wrapper'
 import _ from 'lodash'
 import { updateFormObject } from '../actions/index'
 import { connect } from 'react-redux'
