@@ -3,8 +3,6 @@ import { SET_FORM_OBJECT, UPDATE_FORM_OBJECT } from '../actions/index'
 import _ from 'lodash'
 
 export default function formReducer(state = {}, action) {
-  console.log(action)
-  console.log(state)
   const handlers = {
     [SET_FORM_OBJECT]: () => {
       const { formKey, object } = action

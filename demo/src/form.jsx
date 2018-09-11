@@ -21,9 +21,9 @@ class MyForm extends React.Component {
     const initialState = {
       owner: {
         name: '',
-        addresss: '',
+        address: '',
         birthdate: '',
-        hidden: true,
+        secret: true,
         glasses: false,
         gender: 'male',
         plan: 'free',
@@ -38,6 +38,7 @@ class MyForm extends React.Component {
       className="form-horizontal"
       path="/dogs"
       formKey={'DOG_FORM_KEY'}
+      onSubmit={this.props.onSubmit}
       >
       <h2>Owner Info</h2>
       <Fields for="owner">
@@ -84,6 +85,7 @@ class MyForm extends React.Component {
       </Fields>
       <div>
         <input
+          id="save-form-input"
           type="submit"
           value="Save"/>
       </div>
