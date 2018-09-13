@@ -15,6 +15,7 @@ import Form, {
   UnlabeledControl }
 from '../../build/index';
 import Greeter from './greeter'
+import ClearNameButton from './clear_name_button'
 
 class MyForm extends React.Component {
   render() {
@@ -81,6 +82,7 @@ class MyForm extends React.Component {
             control={UnlabeledControl}
             input={TextAreaInput}/>
           <Greeter/>
+          <ClearNameButton/>
         </div>
       </Fields>
       <div>

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
 import MyForm from '../../src/form'
 import Greeter from '../../src/greeter'
+import ClearNameButton from '../../src/clear_name_button'
 
 describe('<MyForm/>', () => {
   const onSubmitSpy = jasmine.createSpy('onSubmit')
@@ -15,7 +16,7 @@ describe('<MyForm/>', () => {
     reactWrapper.simulate('change', { target: { value }})
   }
 
-  beforeAll((done) => {
+  beforeEach((done) => {
     const nameInput = wrapper.find('input#dog_owner_name')
     simulateChangeEvent(wrapper.find('input#dog_owner_name'), 'Fran')
 
@@ -61,5 +62,12 @@ describe('<MyForm/>', () => {
 
   it('updates Greeter component', () => {
     expect(wrapper.find(Greeter).text()).toContain('Fran')
+  })
+
+  describe('<ClearNameButton/>', () => {
+    it('clears name', () => {
+      wrapper.find(ClearNameButton).simulate('click')
+      expect(getFormState().owner.name).toEqual('')
+    })
   })
 })
