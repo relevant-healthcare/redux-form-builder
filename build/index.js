@@ -50,7 +50,7 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.UnlabeledControl = exports.TextInput = exports.TextAreaInput = exports.SelectInput = exports.RadioButtonGroupInput = exports.LabeledControl = exports.HiddenInput = exports.HiddenControl = exports.formScopedStateWrapper = exports.formsReducer = exports.Fields = exports.Field = exports.DateInput = exports.CheckboxInput = undefined;
+	exports.UPDATE_FORM_OBJECT = exports.updateFormObject = exports.UnlabeledControl = exports.TextInput = exports.TextAreaInput = exports.SET_FORM_OBJECT = exports.setFormObject = exports.SelectInput = exports.RadioButtonGroupInput = exports.LabeledControl = exports.HiddenInput = exports.HiddenControl = exports.formScopedStateWrapper = exports.formsReducer = exports.Fields = exports.Field = exports.DateInput = exports.CheckboxInput = undefined;
 
 	var _form = __webpack_require__(1);
 
@@ -76,6 +76,8 @@ module.exports =
 
 	var _form_scoped_state_wrapper2 = _interopRequireDefault(_form_scoped_state_wrapper);
 
+	var _index = __webpack_require__(82);
+
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
@@ -92,9 +94,13 @@ module.exports =
 	exports.LabeledControl = _control.LabeledControl;
 	exports.RadioButtonGroupInput = _input.RadioButtonGroupInput;
 	exports.SelectInput = _input.SelectInput;
+	exports.setFormObject = _index.setFormObject;
+	exports.SET_FORM_OBJECT = _index.SET_FORM_OBJECT;
 	exports.TextAreaInput = _input.TextAreaInput;
 	exports.TextInput = _input.TextInput;
 	exports.UnlabeledControl = _control.UnlabeledControl;
+	exports.updateFormObject = _index.updateFormObject;
+	exports.UPDATE_FORM_OBJECT = _index.UPDATE_FORM_OBJECT;
 
 /***/ }),
 /* 1 */
