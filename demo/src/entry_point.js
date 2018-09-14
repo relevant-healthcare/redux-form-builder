@@ -2,7 +2,7 @@ import React from 'react'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import { FormsReducer } from '../../build/index'
+import { formsReducer } from '../../build/index'
 import _ from 'lodash'
 
 class EntryPoint extends React.Component {
@@ -11,7 +11,7 @@ class EntryPoint extends React.Component {
 
     if (!this._store) {
       this._store = createStore(
-        combineReducers({ forms: FormsReducer }),
+        combineReducers({ forms: formsReducer }),
         composeEnhancers(applyMiddleware(thunk))
       )
     }
