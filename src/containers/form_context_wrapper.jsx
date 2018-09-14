@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 class FormContextWrapper extends React.Component {
@@ -25,10 +26,10 @@ class FormContextWrapper extends React.Component {
 }
 
 FormContextWrapper.contextTypes = {
-  formContext: React.PropTypes.shape({
-    baseLocalPath: React.PropTypes.array,
-    baseRemotePath: React.PropTypes.array,
-    formKey: React.PropTypes.string
+  formContext: PropTypes.shape({
+    baseLocalPath: PropTypes.array,
+    baseRemotePath: PropTypes.array,
+    formKey: PropTypes.string
   })
 }
 

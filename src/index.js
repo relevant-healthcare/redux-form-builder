@@ -1,5 +1,5 @@
 import Form from './components/form'
-import FormsReducer from './reducers'
+import formsReducer from './reducers'
 import {
   HiddenControl,
   LabeledControl,
@@ -24,7 +24,7 @@ export {
   DateInput,
   Field,
   Fields,
-  FormsReducer,
+  formsReducer,
   formScopedStateWrapper,
   HiddenControl,
   HiddenInput,

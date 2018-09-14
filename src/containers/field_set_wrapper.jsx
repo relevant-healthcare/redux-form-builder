@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import formContextWrapper from './form_context_wrapper'
 
 class FieldSetWrapper extends React.Component {
@@ -65,10 +66,10 @@ class FieldSetWrapper extends React.Component {
 }
 
 FieldSetWrapper.childContextTypes = {
-  formContext: React.PropTypes.shape({
-    baseLocalPath: React.PropTypes.array,
-    baseRemotePath: React.PropTypes.array,
-    formKey: React.PropTypes.string
+  formContext: PropTypes.shape({
+    baseLocalPath: PropTypes.array,
+    baseRemotePath: PropTypes.array,
+    formKey: PropTypes.string
   })
 }
 
