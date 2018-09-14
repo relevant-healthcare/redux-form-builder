@@ -17,6 +17,12 @@ import {
   TextInput
 } from './components/input'
 import formScopedStateWrapper from './containers/form_scoped_state_wrapper'
+import {
+  setFormObject,
+  SET_FORM_OBJECT,
+  updateFormObject,
+  UPDATE_FORM_OBJECT
+} from './actions/index'
 
 export default Form
 export {
@@ -31,7 +37,11 @@ export {
   LabeledControl,
   RadioButtonGroupInput,
   SelectInput,
+  setFormObject,
+  SET_FORM_OBJECT,
   TextAreaInput,
   TextInput,
-  UnlabeledControl
+  UnlabeledControl,
+  updateFormObject,
+  UPDATE_FORM_OBJECT
 }
