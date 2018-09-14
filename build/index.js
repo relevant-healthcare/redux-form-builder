@@ -7344,6 +7344,10 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(40);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _form_context_wrapper = __webpack_require__(78);
 
 	var _form_context_wrapper2 = _interopRequireDefault(_form_context_wrapper);
@@ -7444,10 +7448,10 @@ module.exports =
 	}(_react2.default.Component);
 
 	FieldSetWrapper.childContextTypes = {
-	  formContext: _react2.default.PropTypes.shape({
-	    baseLocalPath: _react2.default.PropTypes.array,
-	    baseRemotePath: _react2.default.PropTypes.array,
-	    formKey: _react2.default.PropTypes.string
+	  formContext: _propTypes2.default.shape({
+	    baseLocalPath: _propTypes2.default.array,
+	    baseRemotePath: _propTypes2.default.array,
+	    formKey: _propTypes2.default.string
 	  })
 	};
 
@@ -7487,6 +7491,10 @@ module.exports =
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(40);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	var _lodash = __webpack_require__(79);
 
@@ -7541,10 +7549,10 @@ module.exports =
 	}(_react2.default.Component);
 
 	FormContextWrapper.contextTypes = {
-	  formContext: _react2.default.PropTypes.shape({
-	    baseLocalPath: _react2.default.PropTypes.array,
-	    baseRemotePath: _react2.default.PropTypes.array,
-	    formKey: _react2.default.PropTypes.string
+	  formContext: _propTypes2.default.shape({
+	    baseLocalPath: _propTypes2.default.array,
+	    baseRemotePath: _propTypes2.default.array,
+	    formKey: _propTypes2.default.string
 	  })
 	};
 
