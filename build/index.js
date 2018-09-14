@@ -50,7 +50,7 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.UnlabeledControl = exports.TextInput = exports.TextAreaInput = exports.SelectInput = exports.RadioButtonGroupInput = exports.LabeledControl = exports.HiddenInput = exports.HiddenControl = exports.formScopedStateWrapper = exports.FormsReducer = exports.Fields = exports.Field = exports.DateInput = exports.CheckboxInput = undefined;
+	exports.UnlabeledControl = exports.TextInput = exports.TextAreaInput = exports.SelectInput = exports.RadioButtonGroupInput = exports.LabeledControl = exports.HiddenInput = exports.HiddenControl = exports.formScopedStateWrapper = exports.formsReducer = exports.Fields = exports.Field = exports.DateInput = exports.CheckboxInput = undefined;
 
 	var _form = __webpack_require__(1);
 
@@ -85,7 +85,7 @@ module.exports =
 	exports.DateInput = _input.DateInput;
 	exports.Field = _field2.default;
 	exports.Fields = _fields2.default;
-	exports.FormsReducer = _reducers2.default;
+	exports.formsReducer = _reducers2.default;
 	exports.formScopedStateWrapper = _form_scoped_state_wrapper2.default;
 	exports.HiddenControl = _control.HiddenControl;
 	exports.HiddenInput = _input.HiddenInput;
