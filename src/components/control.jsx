@@ -7,18 +7,31 @@ function HiddenControl(props) {
   return <HiddenInput id={id} name={name} value={value} />
 }
 
-function UnlabeledControl(props) {
-  const Input = props.input
-  return <div>
-    <Input {...props.inputProps} />
-      {
-        _.isEmpty(props.errors) ? null : (
-          <span className="help-inline error-inline">
-            {s.join(', ', ..._.map(props.errors, 'message'))}
-          </span>
-        )
-      }
-  </div>
+class UnlabeledControl extend React.Component {
+  get hasErrors() {
+    return !_.isEmpty(this.props.errors)
+  }
+
+  get groupClassName() {
+    if (this.hasErrors) {
+      return 'control-group error'
+    }
+    return 'control-group'
+  }
+
+  render() {
+    const Input = this.props.input
+    return <div className={this.groupClassName}>
+      <Input {...this.props.inputProps} />
+        {
+          _.isEmpty(props.errors) ? null : (
+            <span className="help-inline error-inline">
+              {s.join(', ', ..._.map(props.errors, 'message'))}
+            </span>
+          )
+        }
+    </div>
+  }
 }
 
 function LabeledControl(props) {
