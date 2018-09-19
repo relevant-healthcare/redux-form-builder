@@ -35,7 +35,7 @@ class LabeledControl extends React.Component {
 
   render() {
     const Input = this.props.input
-    return <div className="form-group">
+    return <div className={this.groupClassName}>
       <div>
         <label className="control-label col-sm-2" htmlFor={this.props.id}>{this.props.label}</label>
       </div>
