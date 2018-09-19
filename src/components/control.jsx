@@ -7,54 +7,54 @@ function HiddenControl(props) {
   return <HiddenInput id={id} name={name} value={value} />
 }
 
-class UnlabeledControl extend React.Component {
+function UnlabeledControl(props) {
+  const Input = props.input
+  return <div>
+    <Input {...props.inputProps} />
+      {
+        _.isEmpty(props.errors) ? null : (
+          <span className="help-inline error-inline">
+            {s.join(', ', ..._.map(props.errors, 'message'))}
+          </span>
+        )
+      }
+  </div>
+}
+
+class LabeledControl extends React.Component {
   get hasErrors() {
     return !_.isEmpty(this.props.errors)
   }
 
   get groupClassName() {
     if (this.hasErrors) {
-      return 'control-group error'
+      return 'form-group error'
     }
-    return 'control-group'
+    return 'form-group'
   }
 
   render() {
     const Input = this.props.input
-    return <div className={this.groupClassName}>
-      <Input {...this.props.inputProps} />
-        {
-          _.isEmpty(props.errors) ? null : (
-            <span className="help-inline error-inline">
-              {s.join(', ', ..._.map(props.errors, 'message'))}
-            </span>
-          )
-        }
-    </div>
-  }
-}
-
-function LabeledControl(props) {
-  const Input = props.input
-  return <div className="form-group">
+    return <div className="form-group">
       <div>
-        <label className="control-label col-sm-2" htmlFor={props.id}>{props.label}</label>
+        <label className="control-label col-sm-2" htmlFor={this.props.id}>{this.props.label}</label>
       </div>
       <div className="col-sm-5">
         <div>
           {
-            <Input {...props.inputProps} />
+            <Input {...this.props.inputProps} />
           }
         </div>
         {
-          _.isEmpty(props.errors) ? null : (
+          _.isEmpty(this.props.errors) ? null : (
             <span className="help-inline error-inline">
-              {s.join(', ', ..._.map(props.errors, 'message'))}
+              {s.join(', ', ..._.map(this.props.errors, 'message'))}
             </span>
           )
         }
       </div>
     </div>
+  }
 }
 
 export {
