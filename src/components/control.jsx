@@ -23,7 +23,7 @@ function UnlabeledControl(props) {
 
 class LabeledControl extends React.Component {
   get hasErrors() {
-    return !_.isEmpty(this.props.errors)
+    return _.some(this.props.errors)
   }
 
   get groupClassName() {
@@ -46,11 +46,11 @@ class LabeledControl extends React.Component {
           }
         </div>
         {
-          _.isEmpty(this.props.errors) ? null : (
+          this.hasErrors ? (
             <span className="help-inline error-inline">
               {s.join(', ', ..._.map(this.props.errors, 'message'))}
             </span>
-          )
+          ) : null
         }
       </div>
     </div>
