@@ -1,5 +1,4 @@
 import React from 'react'
-import update from 'react/lib/update'
 import s from 'underscore.string'
 import _ from 'lodash'
 import formContextWrapper from '../containers/form_context_wrapper'

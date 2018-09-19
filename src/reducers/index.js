@@ -1,4 +1,4 @@
-import update from 'react/lib/update'
+import update from 'immutability-helper'
 import { SET_FORM_OBJECT, UPDATE_FORM_OBJECT } from '../actions/index'
 import _ from 'lodash'
 
