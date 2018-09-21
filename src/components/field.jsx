@@ -15,16 +15,20 @@ class Field extends React.Component {
     return this.props.hasOwnProperty('as') ? this.props['as'] : this.localName
   }
 
+  get pathRoot() {
+    return this.fullRemotePath[0]
+  }
+
   get fullRemotePath() {
     return this.props.baseRemotePath.concat([this.remoteName])
   }
 
   get fullLocalPath() {
-    return this.props.baseLocalPath.concat([this.localName])
+    return [this.pathRoot].concat(this.props.baseLocalPath, this.localName)
   }
 
   get inputId() {
-    return s.underscored(s.join('_', ...this.fullRemotePath))
+    return s.underscored(s.join('_', ...this.fullLocalPath))
   }
 
   get label() {
@@ -32,7 +36,7 @@ class Field extends React.Component {
   }
 
   get inputName() {
-    const first = s.underscored(this.fullRemotePath[0])
+    const first = s.underscored(this.pathRoot)
     const rest = _.drop(this.fullRemotePath)
     const indexedRest = rest.map(n => { return `[${s.underscored(n)}]` })
 

@@ -78,14 +78,15 @@ describe('<MyForm/>', () => {
   describe('<NestedFields />', () => {
     it('generates IDs based on local names rather than remote names', () => {
       const nestedFields = wrapper.find(NestedFields)
-      expect(nestedFields.some('#dog_owner_agencies_0_name'))
+      console.log(nestedFields.debug())
+      expect(nestedFields.find('input#dog_owner_agencies_0_name').length).toEqual(1)
     })
   })
 
   describe('checkbox IDs', () => {
     it('only renders one checkbox input with a given ID', () => {
       const myForm = wrapper.find(MyForm)
-      expect(myForm.find('#dog_owner_glasses').length).toEqual(1)
+      expect(myForm.find('input#dog_owner_glasses').length).toEqual(1)
     })
   })
 })
