@@ -20,6 +20,10 @@ class Field extends React.Component {
     return this.props.baseRemotePath.concat([this.remoteName])
   }
 
+  get fullLocalPath() {
+    return this.props.baseLocalPath.concat([this.localName])
+  }
+
   get inputId() {
     return s.underscored(s.join('_', ...this.fullRemotePath))
   }
@@ -82,4 +86,4 @@ export default formScopedStateWrapper((object, props) => {
     [props['for']]: object[props['for']],
     errors: object.errors
   }
-})(formContextWrapper(({ baseRemotePath }) => { return { baseRemotePath } })(Field))
+})(formContextWrapper(({ baseRemotePath, baseLocalPath }) => { return { baseRemotePath, baseLocalPath } })(Field))
