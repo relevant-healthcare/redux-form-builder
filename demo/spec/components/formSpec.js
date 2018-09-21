@@ -4,6 +4,7 @@ import { mount } from 'enzyme'
 import MyForm from '../../src/form'
 import Greeter from '../../src/greeter'
 import ClearNameButton from '../../src/clear_name_button'
+import NestedFields from '../../src/nested_fields'
 
 describe('<MyForm/>', () => {
   const onSubmitSpy = jasmine.createSpy('onSubmit')
@@ -18,7 +19,7 @@ describe('<MyForm/>', () => {
 
   beforeEach((done) => {
     const nameInput = wrapper.find('input#dog_owner_name')
-    simulateChangeEvent(wrapper.find('input#dog_owner_name'), 'Fran')
+    simulateChangeEvent(nameInput, 'Fran')
 
     const addressInput = wrapper.find('input#dog_owner_address')
     simulateChangeEvent(addressInput, '123 Wallaby Way')
@@ -51,7 +52,10 @@ describe('<MyForm/>', () => {
       glasses: true,
       gender: 'female',
       plan: 'basic',
-      notes: 'beware cats'
+      notes: 'beware cats',
+      agencies: [
+        { name: 'Some Agency' }
+      ]
     })
   })
 
@@ -68,6 +72,20 @@ describe('<MyForm/>', () => {
     it('clears name', () => {
       wrapper.find(ClearNameButton).simulate('click')
       expect(getFormState().owner.name).toEqual('')
+    })
+  })
+
+  describe('<NestedFields />', () => {
+    it('generates IDs based on local names rather than remote names', () => {
+      const nestedFields = wrapper.find(NestedFields)
+      expect(nestedFields.some('#dog_owner_agencies_0_name'))
+    })
+  })
+
+  describe('checkbox IDs', () => {
+    it('only renders one checkbox input with a given ID', () => {
+      const myForm = wrapper.find(MyForm)
+      expect(myForm.find('#dog_owner_glasses').length).toEqual(1)
     })
   })
 })
