@@ -5642,7 +5642,7 @@ module.exports =
 	  var undefined;
 
 	  /** Used as the semantic version number. */
-	  var VERSION = '4.17.10';
+	  var VERSION = '4.17.11';
 
 	  /** Used as the size to enable large array optimizations. */
 	  var LARGE_ARRAY_SIZE = 200;
@@ -5906,7 +5906,7 @@ module.exports =
 	  var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
 
 	  /** Used to detect strings that need a more robust regexp to match words. */
-	  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+	  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
 	  /** Used to assign default `context` object properties. */
 	  var contextProps = [
@@ -6852,20 +6852,6 @@ module.exports =
 	      }
 	    }
 	    return result;
-	  }
-
-	  /**
-	   * Gets the value at `key`, unless `key` is "__proto__".
-	   *
-	   * @private
-	   * @param {Object} object The object to query.
-	   * @param {string} key The key of the property to get.
-	   * @returns {*} Returns the property value.
-	   */
-	  function safeGet(object, key) {
-	    return key == '__proto__'
-	      ? undefined
-	      : object[key];
 	  }
 
 	  /**
@@ -9325,7 +9311,7 @@ module.exports =
 	          if (isArguments(objValue)) {
 	            newValue = toPlainObject(objValue);
 	          }
-	          else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
+	          else if (!isObject(objValue) || isFunction(objValue)) {
 	            newValue = initCloneObject(srcValue);
 	          }
 	        }
@@ -12246,6 +12232,22 @@ module.exports =
 	        array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
 	      }
 	      return array;
+	    }
+
+	    /**
+	     * Gets the value at `key`, unless `key` is "__proto__".
+	     *
+	     * @private
+	     * @param {Object} object The object to query.
+	     * @param {string} key The key of the property to get.
+	     * @returns {*} Returns the property value.
+	     */
+	    function safeGet(object, key) {
+	      if (key == '__proto__') {
+	        return;
+	      }
+
+	      return object[key];
 	    }
 
 	    /**
@@ -23356,13 +23358,14 @@ module.exports =
 	          value = _props2.value,
 	          onChange = _props2.onChange,
 	          className = _props2.className,
-	          otherProps = _objectWithoutProperties(_props2, ['value', 'onChange', 'className']);
+	          id = _props2.id,
+	          otherProps = _objectWithoutProperties(_props2, ['value', 'onChange', 'className', 'id']);
 
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement('input', _extends({ type: 'hidden', value: '0' }, otherProps)),
-	        _react2.default.createElement('input', _extends({ type: 'checkbox', value: '1', onChange: this.onChange, defaultChecked: value }, otherProps))
+	        _react2.default.createElement('input', _extends({ type: 'checkbox', value: '1', onChange: this.onChange, defaultChecked: value, id: id }, otherProps))
 	      );
 	    }
 	  }]);
@@ -25208,14 +25211,24 @@ module.exports =
 	      return this.props.hasOwnProperty('as') ? this.props['as'] : this.localName;
 	    }
 	  }, {
+	    key: 'pathRoot',
+	    get: function get() {
+	      return this.fullRemotePath[0];
+	    }
+	  }, {
 	    key: 'fullRemotePath',
 	    get: function get() {
 	      return this.props.baseRemotePath.concat([this.remoteName]);
 	    }
 	  }, {
+	    key: 'fullLocalPath',
+	    get: function get() {
+	      return [this.pathRoot].concat(this.props.baseLocalPath, this.localName);
+	    }
+	  }, {
 	    key: 'inputId',
 	    get: function get() {
-	      return _underscore2.default.underscored(_underscore2.default.join.apply(_underscore2.default, ['_'].concat(_toConsumableArray(this.fullRemotePath))));
+	      return _underscore2.default.underscored(_underscore2.default.join.apply(_underscore2.default, ['_'].concat(_toConsumableArray(this.fullLocalPath))));
 	    }
 	  }, {
 	    key: 'label',
@@ -25225,7 +25238,7 @@ module.exports =
 	  }, {
 	    key: 'inputName',
 	    get: function get() {
-	      var first = _underscore2.default.underscored(this.fullRemotePath[0]);
+	      var first = _underscore2.default.underscored(this.pathRoot);
 	      var rest = _lodash2.default.drop(this.fullRemotePath);
 	      var indexedRest = rest.map(function (n) {
 	        return '[' + _underscore2.default.underscored(n) + ']';
@@ -25272,8 +25285,9 @@ module.exports =
 
 	  return _ref2 = {}, _defineProperty(_ref2, props['for'], object[props['for']]), _defineProperty(_ref2, 'errors', object.errors), _ref2;
 	})((0, _form_context_wrapper2.default)(function (_ref3) {
-	  var baseRemotePath = _ref3.baseRemotePath;
-	  return { baseRemotePath: baseRemotePath };
+	  var baseRemotePath = _ref3.baseRemotePath,
+	      baseLocalPath = _ref3.baseLocalPath;
+	  return { baseRemotePath: baseRemotePath, baseLocalPath: baseLocalPath };
 	})(Field));
 
 /***/ }),

@@ -3,12 +3,12 @@ import update from 'react/lib/update'
 import { formScopedStateWrapper } from '../../build/index'
 
 class ClearNameButton extends React.Component {
-  clearName() {
+  clearName = () => {
     this.props.onChange(update(this.props.owner, { name: { $set: '' }}))
   }
-  
+
   render() {
-    return <button type="button" onClick={this.clearName.bind(this)}>Clear name</button>
+    return <button type="button" onClick={this.clearName}>Clear name</button>
   }
 }
 

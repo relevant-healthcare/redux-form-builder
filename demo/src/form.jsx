@@ -16,6 +16,7 @@ import Form, {
 from '../../build/index';
 import Greeter from './greeter'
 import ClearNameButton from './clear_name_button'
+import NestedFields from './nested_fields'
 
 class MyForm extends React.Component {
   render() {
@@ -28,7 +29,10 @@ class MyForm extends React.Component {
         glasses: false,
         gender: 'male',
         plan: 'free',
-        notes: ''
+        notes: '',
+        agencies: [
+           { name: 'Some Agency' }
+        ]
       }
     }
 
@@ -81,7 +85,9 @@ class MyForm extends React.Component {
             for="notes"
             control={UnlabeledControl}
             input={TextAreaInput}/>
+          <NestedFields />
           <Greeter/>
+
           <ClearNameButton/>
         </div>
       </Fields>
