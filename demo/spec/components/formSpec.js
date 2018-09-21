@@ -78,7 +78,6 @@ describe('<MyForm/>', () => {
   describe('<NestedFields />', () => {
     it('generates IDs based on local names rather than remote names', () => {
       const nestedFields = wrapper.find(NestedFields)
-      console.log(nestedFields.debug())
       expect(nestedFields.find('input#dog_owner_agencies_0_name').length).toEqual(1)
     })
   })
