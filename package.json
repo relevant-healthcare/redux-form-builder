@@ -13,11 +13,11 @@
     "underscore.string": "^3.2.3"
   },
   "peerDependencies": {
-    "react-dom": "^16.5.1",
-    "react": "^16.5.1",
+    "react-dom": ">=15.4.2 <17",
+    "react": ">=15.4.2 <17",
     "react-redux": "^5.0.6",
     "redux-thunk": "^2.2.0",
-    "redux": "3.6.0"
+    "redux": ">=3.6.0 <5"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
