@@ -5,6 +5,7 @@ import {
   LabeledControl,
   UnlabeledControl
 } from './components/control'
+import ErrorMessages from './components/error_messages'
 import Field from './components/field'
 import Fields from './components/fields'
 import {
@@ -28,6 +29,7 @@ export default Form
 export {
   CheckboxInput,
   DateInput,
+  ErrorMessages,
   Field,
   Fields,
   formsReducer,

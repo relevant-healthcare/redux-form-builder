@@ -50,7 +50,7 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.UPDATE_FORM_OBJECT = exports.updateFormObject = exports.UnlabeledControl = exports.TextInput = exports.TextAreaInput = exports.SET_FORM_OBJECT = exports.setFormObject = exports.SelectInput = exports.RadioButtonGroupInput = exports.LabeledControl = exports.HiddenInput = exports.HiddenControl = exports.formScopedStateWrapper = exports.formsReducer = exports.Fields = exports.Field = exports.DateInput = exports.CheckboxInput = undefined;
+	exports.UPDATE_FORM_OBJECT = exports.updateFormObject = exports.UnlabeledControl = exports.TextInput = exports.TextAreaInput = exports.SET_FORM_OBJECT = exports.setFormObject = exports.SelectInput = exports.RadioButtonGroupInput = exports.LabeledControl = exports.HiddenInput = exports.HiddenControl = exports.formScopedStateWrapper = exports.formsReducer = exports.Fields = exports.Field = exports.ErrorMessages = exports.DateInput = exports.CheckboxInput = undefined;
 
 	var _form = __webpack_require__(1);
 
@@ -62,11 +62,15 @@ module.exports =
 
 	var _control = __webpack_require__(56);
 
-	var _field = __webpack_require__(131);
+	var _error_messages = __webpack_require__(131);
+
+	var _error_messages2 = _interopRequireDefault(_error_messages);
+
+	var _field = __webpack_require__(132);
 
 	var _field2 = _interopRequireDefault(_field);
 
-	var _fields = __webpack_require__(132);
+	var _fields = __webpack_require__(133);
 
 	var _fields2 = _interopRequireDefault(_fields);
 
@@ -85,6 +89,7 @@ module.exports =
 	exports.default = _form2.default;
 	exports.CheckboxInput = _input.CheckboxInput;
 	exports.DateInput = _input.DateInput;
+	exports.ErrorMessages = _error_messages2.default;
 	exports.Field = _field2.default;
 	exports.Fields = _fields2.default;
 	exports.formsReducer = _reducers2.default;
@@ -5642,7 +5647,7 @@ module.exports =
 	  var undefined;
 
 	  /** Used as the semantic version number. */
-	  var VERSION = '4.17.11';
+	  var VERSION = '4.17.10';
 
 	  /** Used as the size to enable large array optimizations. */
 	  var LARGE_ARRAY_SIZE = 200;
@@ -5906,7 +5911,7 @@ module.exports =
 	  var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
 
 	  /** Used to detect strings that need a more robust regexp to match words. */
-	  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+	  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
 	  /** Used to assign default `context` object properties. */
 	  var contextProps = [
@@ -6852,6 +6857,20 @@ module.exports =
 	      }
 	    }
 	    return result;
+	  }
+
+	  /**
+	   * Gets the value at `key`, unless `key` is "__proto__".
+	   *
+	   * @private
+	   * @param {Object} object The object to query.
+	   * @param {string} key The key of the property to get.
+	   * @returns {*} Returns the property value.
+	   */
+	  function safeGet(object, key) {
+	    return key == '__proto__'
+	      ? undefined
+	      : object[key];
 	  }
 
 	  /**
@@ -9311,7 +9330,7 @@ module.exports =
 	          if (isArguments(objValue)) {
 	            newValue = toPlainObject(objValue);
 	          }
-	          else if (!isObject(objValue) || isFunction(objValue)) {
+	          else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
 	            newValue = initCloneObject(srcValue);
 	          }
 	        }
@@ -12232,22 +12251,6 @@ module.exports =
 	        array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
 	      }
 	      return array;
-	    }
-
-	    /**
-	     * Gets the value at `key`, unless `key` is "__proto__".
-	     *
-	     * @private
-	     * @param {Object} object The object to query.
-	     * @param {string} key The key of the property to get.
-	     * @returns {*} Returns the property value.
-	     */
-	    function safeGet(object, key) {
-	      if (key == '__proto__') {
-	        return;
-	      }
-
-	      return object[key];
 	    }
 
 	    /**
@@ -25129,6 +25132,106 @@ module.exports =
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _lodash = __webpack_require__(51);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _form_scoped_state_wrapper = __webpack_require__(52);
+
+	var _form_scoped_state_wrapper2 = _interopRequireDefault(_form_scoped_state_wrapper);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ErrorMessages = function (_React$Component) {
+	  _inherits(ErrorMessages, _React$Component);
+
+	  function ErrorMessages() {
+	    _classCallCheck(this, ErrorMessages);
+
+	    return _possibleConstructorReturn(this, (ErrorMessages.__proto__ || Object.getPrototypeOf(ErrorMessages)).apply(this, arguments));
+	  }
+
+	  _createClass(ErrorMessages, [{
+	    key: 'render',
+	    value: function render() {
+	      if (!this.hasErrors) {
+	        return null;
+	      }
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'alert alert-danger alert-error' },
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          _react2.default.createElement(
+	            'strong',
+	            null,
+	            'Something is wrong.'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          this.baseErrors.map(function (error) {
+	            return _react2.default.createElement(
+	              'li',
+	              null,
+	              error.message
+	            );
+	          })
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'errors',
+	    get: function get() {
+	      return this.props.errors || {};
+	    }
+	  }, {
+	    key: 'baseErrors',
+	    get: function get() {
+	      return _lodash2.default.filter(this.errors, function (error) {
+	        return error.attribute == 'base';
+	      });
+	    }
+	  }, {
+	    key: 'hasErrors',
+	    get: function get() {
+	      return _lodash2.default.some(this.errors);
+	    }
+	  }]);
+
+	  return ErrorMessages;
+	}(_react2.default.Component);
+
+	exports.default = (0, _form_scoped_state_wrapper2.default)(function (_ref) {
+	  var errors = _ref.errors;
+	  return { errors: errors };
+	})(ErrorMessages);
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -25291,7 +25394,7 @@ module.exports =
 	})(Field));
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
