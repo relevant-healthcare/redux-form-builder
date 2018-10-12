@@ -19,8 +19,7 @@ class Form extends React.Component {
 
   onSubmit = (event) => {
     if (this.props.onSubmit) {
-      event.preventDefault()
-      this.props.onSubmit(this.props.object)
+      this.props.onSubmit(_.merge({}, event, { target: { value: this.props.object } }))
     }
   }
 
