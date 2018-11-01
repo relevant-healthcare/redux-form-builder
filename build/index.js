@@ -23359,15 +23359,12 @@ module.exports =
 	      var _props2 = this.props,
 	          value = _props2.value,
 	          onChange = _props2.onChange,
-	          className = _props2.className,
-	          id = _props2.id,
-	          otherProps = _objectWithoutProperties(_props2, ['value', 'onChange', 'className', 'id']);
+	          otherProps = _objectWithoutProperties(_props2, ['value', 'onChange']);
 
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('input', _extends({ type: 'hidden', value: '0' }, otherProps)),
-	        _react2.default.createElement('input', _extends({ type: 'checkbox', value: '1', onChange: this.onChange, defaultChecked: value, id: id }, otherProps))
+	        _react2.default.createElement('input', _extends({ type: 'checkbox', checked: value, onChange: this.onChange }, otherProps))
 	      );
 	    }
 	  }]);

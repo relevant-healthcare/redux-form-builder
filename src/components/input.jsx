@@ -31,11 +31,10 @@ class CheckboxInput extends React.Component {
   }
 
   render() {
-      let { value, onChange, className, id, ...otherProps } = this.props
-      return <div>
-        <input type='hidden' value="0" {...otherProps} />
-        <input type='checkbox' value="1" onChange={this.onChange} defaultChecked={value} id={id} {...otherProps} />
-      </div>
+    const{ value, onChange, ...otherProps } = this.props
+    return <div>
+      <input type='checkbox' checked={value} onChange={this.onChange} {...otherProps} />
+    </div>
   }
 }
 
