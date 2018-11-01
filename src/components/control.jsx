@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, HiddenInput } from './input'
+import { HiddenInput } from './input'
 import s from 'underscore.string'
 
 function HiddenControl(props) {
