@@ -1,6 +1,6 @@
 {
   "name": "redux-form-builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React-Redux form builder component",
   "main": "./build/index.js",
   "license": "MIT",
