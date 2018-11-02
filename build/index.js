@@ -23364,6 +23364,7 @@ module.exports =
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        !value && _react2.default.createElement('input', _extends({ type: 'hidden', value: '0' }, otherProps)),
 	        _react2.default.createElement('input', _extends({ type: 'checkbox', checked: value, onChange: this.onChange }, otherProps))
 	      );
 	    }
