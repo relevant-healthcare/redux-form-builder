@@ -165,7 +165,7 @@ module.exports =
 
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Form.__proto__ || Object.getPrototypeOf(Form)).call.apply(_ref, [this].concat(args))), _this), _this.onSubmit = function (event) {
 	      if (_this.props.onSubmit) {
-	        _this.props.onSubmit(_lodash2.default.merge({}, event, { target: { value: _this.props.object } }));
+	        _this.props.onSubmit(_lodash2.default.assign({}, event, { target: { value: _this.props.object } }));
 	      }
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
