@@ -23300,10 +23300,9 @@ module.exports =
 
 	      var _this = _possibleConstructorReturn(this, (_class2.__proto__ || Object.getPrototypeOf(_class2)).call(this, props));
 
-	      _this.onChange = function (_ref) {
-	        var value = _ref.target.value;
-
-	        _this.debouncedOnChange({ target: { value: value } });
+	      _this.onChange = function (event) {
+	        event.stopPropagation();
+	        _this.debouncedOnChange({ target: { value: event.target.value } });
 	      };
 
 	      _this.debouncedOnChange = _lodash2.default.debounce(_this.props.onChange || function () {}, 200);
@@ -23336,7 +23335,7 @@ module.exports =
 	  _inherits(CheckboxInput, _React$Component2);
 
 	  function CheckboxInput() {
-	    var _ref2;
+	    var _ref;
 
 	    var _temp, _this2, _ret;
 
@@ -23346,10 +23345,9 @@ module.exports =
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref2 = CheckboxInput.__proto__ || Object.getPrototypeOf(CheckboxInput)).call.apply(_ref2, [this].concat(args))), _this2), _this2.onChange = function (_ref3) {
-	      var checked = _ref3.target.checked;
-
-	      _this2.props.onChange({ target: { value: checked } });
+	    return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = CheckboxInput.__proto__ || Object.getPrototypeOf(CheckboxInput)).call.apply(_ref, [this].concat(args))), _this2), _this2.onChange = function (event) {
+	      event.stopPropagation();
+	      _this2.props.onChange({ target: { value: event.target.checked } });
 	    }, _temp), _possibleConstructorReturn(_this2, _ret);
 	  }
 
@@ -23377,9 +23375,9 @@ module.exports =
 	  return _react2.default.createElement('textarea', props);
 	}
 
-	function SelectInput(_ref4) {
-	  var options = _ref4.options,
-	      props = _objectWithoutProperties(_ref4, ['options']);
+	function SelectInput(_ref2) {
+	  var options = _ref2.options,
+	      props = _objectWithoutProperties(_ref2, ['options']);
 
 	  var className = props.className,
 	      value = props.value,
@@ -23392,9 +23390,9 @@ module.exports =
 	  return _react2.default.createElement(
 	    'select',
 	    _extends({}, propsWithDefaults, otherProps),
-	    options.map(function (_ref5) {
-	      var name = _ref5.name,
-	          value = _ref5.value;
+	    options.map(function (_ref3) {
+	      var name = _ref3.name,
+	          value = _ref3.value;
 
 	      return _react2.default.createElement(
 	        'option',
@@ -25284,6 +25282,9 @@ module.exports =
 	    }
 
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Field.__proto__ || Object.getPrototypeOf(Field)).call.apply(_ref, [this].concat(args))), _this), _this.onChange = function (event) {
+	      if (event.stopPropagation) {
+	        event.stopPropagation();
+	      }
 	      _this.props.onChange(_defineProperty({}, _this.localName, event.target.value));
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }

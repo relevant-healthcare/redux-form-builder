@@ -47,19 +47,21 @@ describe('<MyForm/>', () => {
   });
 
   it('updates form state', () => {
-    expect(getFormState().owner).toEqual({
-      name: 'Fran',
-      address: '123 Wallaby Way',
-      birthdate: '01/01/1990',
-      secret: true,
-      glasses: true,
-      gender: 'female',
-      plan: 'basic',
-      notes: 'beware cats',
-      interests: ['fetch'],
-      agencies: [
-        { name: 'Some Agency' }
-      ]
+    expect(getFormState()).toEqual({
+      owner: {
+        name: 'Fran',
+        address: '123 Wallaby Way',
+        birthdate: '01/01/1990',
+        secret: true,
+        glasses: true,
+        gender: 'female',
+        plan: 'basic',
+        notes: 'beware cats',
+        interests: ['fetch'],
+        agencies: [
+          { name: 'Some Agency' }
+        ]
+      }
     })
   })
 
