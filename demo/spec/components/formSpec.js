@@ -63,7 +63,7 @@ describe('<MyForm/>', () => {
     })
   })
 
-  it('calls onSubmit on form submission with form state', () => {
+  it('calls onSubmit on form submission', () => {
     wrapper.find('[type="submit"]').simulate('submit')
     expect(onSubmitSpy).toHaveBeenCalled()
   })
@@ -83,7 +83,6 @@ describe('<MyForm/>', () => {
 
       wrapper.find('[type="submit"]').simulate('submit')
       expect(onSubmitSpy).toHaveBeenCalled()
-
       expect(onSubmitSpy.calls.mostRecent().args[0].target.value.owner.interests).toEqual([])
     })
   })
