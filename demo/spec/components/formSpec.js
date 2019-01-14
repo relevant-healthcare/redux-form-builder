@@ -46,23 +46,21 @@ describe('<MyForm/>', () => {
     setTimeout(done, 300);
   });
 
-  const updatedFormState = {
-    name: 'Fran',
-    address: '123 Wallaby Way',
-    birthdate: '01/01/1990',
-    secret: true,
-    glasses: true,
-    gender: 'female',
-    plan: 'basic',
-    notes: 'beware cats',
-    interests: ['fetch'],
-    agencies: [
-      { name: 'Some Agency' }
-    ]
-  }
-
   it('updates form state', () => {
-    expect(getFormState().owner).toEqual(updatedFormState)
+    expect(getFormState().owner).toEqual({
+      name: 'Fran',
+      address: '123 Wallaby Way',
+      birthdate: '01/01/1990',
+      secret: true,
+      glasses: true,
+      gender: 'female',
+      plan: 'basic',
+      notes: 'beware cats',
+      interests: ['fetch'],
+      agencies: [
+        { name: 'Some Agency' }
+      ]
+    })
   })
 
   it('calls onSubmit on form submission with form state', () => {
