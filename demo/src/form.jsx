@@ -17,6 +17,7 @@ from '../../build/index';
 import Greeter from './greeter'
 import ClearNameButton from './clear_name_button'
 import NestedFields from './nested_fields'
+import FakeMultiSelectInput from './fake_multi_select_input'
 
 class MyForm extends React.Component {
   render() {
@@ -30,6 +31,7 @@ class MyForm extends React.Component {
         gender: 'male',
         plan: 'free',
         notes: '',
+        interests: [],
         agencies: [
            { name: 'Some Agency' }
         ]
@@ -85,6 +87,9 @@ class MyForm extends React.Component {
             for="notes"
             control={UnlabeledControl}
             input={TextAreaInput}/>
+          <Field
+            for="interests"
+            input={FakeMultiSelectInput}/>
           <NestedFields />
           <Greeter/>
 

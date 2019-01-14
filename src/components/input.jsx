@@ -9,8 +9,9 @@ function SimpleInput(type) {
       this.debouncedOnChange = _.debounce(this.props.onChange || function(){}, 200)
     }
 
-    onChange = ({ target: { value } }) => {
-      this.debouncedOnChange({ target: { value } })
+    onChange = (event) => {
+      event.stopPropagation()
+      this.debouncedOnChange({ target: { value: event.target.value } })
     }
 
     render() {
@@ -26,8 +27,9 @@ const DateInput = SimpleInput('date')
 const HiddenInput = SimpleInput('hidden')
 
 class CheckboxInput extends React.Component {
-  onChange = ({ target: { checked } }) => {
-    this.props.onChange({ target: { value: checked } })
+  onChange = (event) => {
+    event.stopPropagation()
+    this.props.onChange({ target: { value: event.target.checked } })
   }
 
   render() {
