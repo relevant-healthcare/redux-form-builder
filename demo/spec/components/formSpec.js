@@ -39,33 +39,55 @@ describe('<MyForm/>', () => {
     const textAreaInput = wrapper.find('textarea#dog_owner_notes')
     simulateChangeEvent(textAreaInput, 'beware cats')
 
+    const interestsInput = wrapper.find('input#dog_owner_interests')
+    interestsInput.simulate('change', { target: { value: ['fetch'] }})
+
     // Necessary because SimpleInput fields debounce input
     setTimeout(done, 300);
   });
 
+  const updatedFormState = {
+    name: 'Fran',
+    address: '123 Wallaby Way',
+    birthdate: '01/01/1990',
+    secret: true,
+    glasses: true,
+    gender: 'female',
+    plan: 'basic',
+    notes: 'beware cats',
+    interests: ['fetch'],
+    agencies: [
+      { name: 'Some Agency' }
+    ]
+  }
+
   it('updates form state', () => {
-    expect(getFormState().owner).toEqual({
-      name: 'Fran',
-      address: '123 Wallaby Way',
-      birthdate: '01/01/1990',
-      secret: true,
-      glasses: true,
-      gender: 'female',
-      plan: 'basic',
-      notes: 'beware cats',
-      agencies: [
-        { name: 'Some Agency' }
-      ]
-    })
+    expect(getFormState().owner).toEqual(updatedFormState)
   })
 
-  it('calls onSubmit on form submission', () => {
+  it('calls onSubmit on form submission with form state', () => {
     wrapper.find('[type="submit"]').simulate('submit')
     expect(onSubmitSpy).toHaveBeenCalled()
   })
 
   it('updates Greeter component', () => {
     expect(wrapper.find(Greeter).text()).toContain('Fran')
+  })
+
+  describe('<FakeMultiSelectInput/>', () => {
+    it('submits empty array after clearing selection', () => {
+      wrapper.find('[type="submit"]').simulate('submit')
+      expect(onSubmitSpy).toHaveBeenCalled()
+      expect(onSubmitSpy.calls.mostRecent().args[0].target.value.owner.interests).toEqual(['fetch'])
+
+      const interestsInput = wrapper.find('input#dog_owner_interests')
+      interestsInput.simulate('change', { target: { value: [] }})
+
+      wrapper.find('[type="submit"]').simulate('submit')
+      expect(onSubmitSpy).toHaveBeenCalled()
+
+      expect(onSubmitSpy.calls.mostRecent().args[0].target.value.owner.interests).toEqual([])
+    })
   })
 
   describe('<ClearNameButton/>', () => {
