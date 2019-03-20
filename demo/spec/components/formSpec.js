@@ -88,4 +88,12 @@ describe('<MyForm/>', () => {
       expect(myForm.find('input#dog_owner_glasses').length).toEqual(1)
     })
   })
+
+  describe('<ErrorMessages />', () => {
+    it('renders base errors', () => {
+      const myForm = wrapper.find(MyForm)
+      expect(myForm.text()).toContain('test base error')
+      expect(myForm.text()).not.toContain('test other error')
+    })
+  })
 })
