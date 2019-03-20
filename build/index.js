@@ -25180,10 +25180,10 @@ module.exports =
 	        _react2.default.createElement(
 	          'ul',
 	          null,
-	          this.baseErrors.map(function (error) {
+	          this.baseErrors.map(function (error, idx) {
 	            return _react2.default.createElement(
 	              'li',
-	              null,
+	              { key: idx },
 	              error.message
 	            );
 	          })

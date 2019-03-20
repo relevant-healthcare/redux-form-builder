@@ -1,8 +1,9 @@
-import React from 'react';
-import entryPoint from './entry_point'
+import React from "react";
+import entryPoint from "./entry_point"
 import Form, {
   CheckboxInput,
   DateInput,
+  ErrorMessages,
   Field,
   Fields,
   HiddenControl,
@@ -13,41 +14,46 @@ import Form, {
   TextAreaInput,
   TextInput,
   UnlabeledControl }
-from '../../build/index';
-import Greeter from './greeter'
-import ClearNameButton from './clear_name_button'
-import NestedFields from './nested_fields'
+from "../../build/index";
+import Greeter from "./greeter"
+import ClearNameButton from "./clear_name_button"
+import NestedFields from "./nested_fields"
 import FakeMultiSelectInput from './fake_multi_select_input'
 
 class MyForm extends React.Component {
   render() {
     const initialState = {
       owner: {
-        name: '',
-        address: '',
-        birthdate: '',
+        name: "",
+        address: "",
+        birthdate: "",
         secret: true,
         glasses: false,
-        gender: 'male',
-        plan: 'free',
-        notes: '',
+        gender: "male",
+        plan: "free",
+        notes: "",
         interests: [],
         agencies: [
-           { name: 'Some Agency' }
-        ]
-      }
+           { name: "Some Agency" }
+        ],
+      },
+      errors: [
+        { attribute: "base", message: "test base error" },
+        { attribute: "some_other_attribute", message: "test other error" }
+      ]
     }
 
     return <Form
       for={initialState}
       as="dog"
-      authenticityToken={''}
+      authenticityToken=""
       className="form-horizontal"
       path="/dogs"
-      formKey={'DOG_FORM_KEY'}
+      formKey="DOG_FORM_KEY"
       onSubmit={this.props.onSubmit}
       >
       <h2>Owner Info</h2>
+      <ErrorMessages />
       <Fields for="owner">
         <div>
           <Field for="name"/>

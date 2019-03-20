@@ -24,8 +24,8 @@ class ErrorMessages extends React.Component {
       <p><strong>Something is wrong.</strong></p>
       <ul>
         {
-          this.baseErrors.map((error) => {
-            return <li>{error.message}</li>
+          this.baseErrors.map((error, idx) => {
+            return <li key={idx}>{error.message}</li>
           })
         }
       </ul>

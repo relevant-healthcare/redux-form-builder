@@ -61,7 +61,11 @@ describe('<MyForm/>', () => {
         agencies: [
           { name: 'Some Agency' }
         ]
-      }
+      },
+      errors: [
+        { attribute: "base", message: "test base error" },
+        { attribute: "some_other_attribute", message: "test other error" }
+      ]
     })
   })
 
@@ -107,6 +111,14 @@ describe('<MyForm/>', () => {
     it('only renders one checkbox input with a given ID', () => {
       const myForm = wrapper.find(MyForm)
       expect(myForm.find('input#dog_owner_glasses').length).toEqual(1)
+    })
+  })
+
+  describe('<ErrorMessages />', () => {
+    it('renders base errors', () => {
+      const myForm = wrapper.find(MyForm)
+      expect(myForm.text()).toContain('test base error')
+      expect(myForm.text()).not.toContain('test other error')
     })
   })
 })
