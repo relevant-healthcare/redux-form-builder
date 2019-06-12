@@ -19,7 +19,7 @@ class Form extends React.Component {
 
   onSubmit = (event) => {
     if (this.props.onSubmit) {
-      this.props.onSubmit(_.extend(event, { target: { value: this.props.object } }))
+      this.props.onSubmit({ syntheticEvent: event, target: { value: this.props.object }})
     }
   }
 
