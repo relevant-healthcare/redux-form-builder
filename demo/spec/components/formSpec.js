@@ -27,6 +27,9 @@ describe('<MyForm/>', () => {
     const dateInput = wrapper.find('input#dog_owner_birthdate')
     simulateChangeEvent(dateInput, '01/01/1990')
 
+    const datePickerInput = wrapper.find('input#dog_owner_special_date')
+    datePickerInput.simulate('change', { target: { value: '01/01/2020'} })
+
     const checkboxInput = wrapper.find('input[type="checkbox"]#dog_owner_glasses')
     checkboxInput.simulate('change', { target: { checked: true }})
 
@@ -52,6 +55,7 @@ describe('<MyForm/>', () => {
         name: 'Fran',
         address: '123 Wallaby Way',
         birthdate: '01/01/1990',
+        special_date: '01/01/2020',
         secret: true,
         glasses: true,
         gender: 'female',
