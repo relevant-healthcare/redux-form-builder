@@ -25295,11 +25295,17 @@ module.exports =
 	      var Control = this.control;
 	      var sharedProps = this.sharedProps;
 	      var inputProps = _lodash2.default.assign({ className: 'form-control' }, sharedProps, this.props.inputProps);
-	      return _react2.default.createElement(Control, _extends({
-	        errors: this.errors,
-	        input: this.props.input || _input.TextInput,
-	        inputProps: inputProps
-	      }, sharedProps, this.props.controlProps));
+	      return _react2.default.createElement(
+	        'div',
+	        { onChange: function onChange(e) {
+	            return e.stopPropagation();
+	          } },
+	        _react2.default.createElement(Control, _extends({
+	          errors: this.errors,
+	          input: this.props.input || _input.TextInput,
+	          inputProps: inputProps
+	        }, sharedProps, this.props.controlProps))
+	      );
 	    }
 	  }, {
 	    key: 'localName',

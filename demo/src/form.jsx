@@ -19,6 +19,7 @@ import Greeter from "./greeter"
 import ClearNameButton from "./clear_name_button"
 import NestedFields from "./nested_fields"
 import FakeMultiSelectInput from './fake_multi_select_input'
+import FakeDatePickerInput from './fake_date_picker_input'
 
 class MyForm extends React.Component {
   render() {
@@ -27,6 +28,7 @@ class MyForm extends React.Component {
         name: "",
         address: "",
         birthdate: "",
+        special_date: "",
         secret: true,
         glasses: false,
         gender: "male",
@@ -51,7 +53,7 @@ class MyForm extends React.Component {
       path="/dogs"
       formKey="DOG_FORM_KEY"
       onSubmit={this.props.onSubmit}
-      >
+    >
       <h2>Owner Info</h2>
       <ErrorMessages />
       <Fields for="owner">
@@ -66,6 +68,12 @@ class MyForm extends React.Component {
             control={LabeledControl}
             label="Birth Date"
             input={DateInput}/>
+          <Field
+            for="special_date"
+            control={LabeledControl}
+            label="Special Date"
+            input={FakeDatePickerInput}
+          />
           <Field
             for="secret"
             control={HiddenControl}
