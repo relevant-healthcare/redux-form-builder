@@ -24,7 +24,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const htmlFormProps = _.pick(this.props, 'className', 'onChange')
+    const htmlFormProps = _.pick(this.props, 'className', 'onChange', 'enctype')
 
     return <form action={this.action} method="post" {...htmlFormProps} onSubmit={this.onSubmit}>
       <input name="utf8" type="hidden" value="✓" />
