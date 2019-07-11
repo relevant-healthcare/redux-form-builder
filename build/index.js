@@ -173,7 +173,7 @@ module.exports =
 	  _createClass(Form, [{
 	    key: 'render',
 	    value: function render() {
-	      var htmlFormProps = _lodash2.default.pick(this.props, 'className', 'onChange', 'enctype');
+	      var htmlFormProps = _lodash2.default.pick(this.props, 'className', 'onChange', 'encType');
 
 	      return _react2.default.createElement(
 	        'form',
