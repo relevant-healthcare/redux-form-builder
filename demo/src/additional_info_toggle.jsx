@@ -12,7 +12,7 @@ class AdditionalInfoToggle extends React.Component {
 
   render() {
     return (
-      <div className="additional-info-toggle">
+      <div>
         <button type="button" className="additional-info-toggle" onClick={this.toggleShow}>Show Additional Info</button>
         { this.state.show && (
             <Field
