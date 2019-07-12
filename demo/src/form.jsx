@@ -20,6 +20,7 @@ import ClearNameButton from "./clear_name_button"
 import NestedFields from "./nested_fields"
 import FakeMultiSelectInput from './fake_multi_select_input'
 import FakeDatePickerInput from './fake_date_picker_input'
+import AdditionalInfoToggle from './additional_info_toggle'
 
 class MyForm extends React.Component {
   render() {
@@ -39,6 +40,7 @@ class MyForm extends React.Component {
            { name: "Some Agency" }
         ],
       },
+      additional_info: "",
       errors: [
         { attribute: "base", message: "test base error" },
         { attribute: "some_other_attribute", message: "test other error" }
@@ -110,6 +112,7 @@ class MyForm extends React.Component {
           <ClearNameButton/>
         </div>
       </Fields>
+      <AdditionalInfoToggle />
       <div>
         <input
           id="save-form-input"
