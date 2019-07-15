@@ -25292,7 +25292,9 @@ module.exports =
 	  _createClass(Field, [{
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      this.props.onChange(_defineProperty({}, this.localName, null));
+	      if (this.props.clearStateOnUnmount) {
+	        this.props.onChange(_defineProperty({}, this.localName, null));
+	      }
 	    }
 	  }, {
 	    key: 'render',

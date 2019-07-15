@@ -72,7 +72,9 @@ class Field extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.onChange({ [this.localName]: null })
+    if (this.props.clearStateOnUnmount) {
+      this.props.onChange({ [this.localName]: null })
+    }
   }
 
   render() {
