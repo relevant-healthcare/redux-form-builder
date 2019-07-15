@@ -25290,6 +25290,11 @@ module.exports =
 	  }
 
 	  _createClass(Field, [{
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.props.onChange(_defineProperty({}, this.localName, null));
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var Control = this.control;

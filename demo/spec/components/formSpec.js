@@ -5,19 +5,22 @@ import MyForm from '../../src/form'
 import Greeter from '../../src/greeter'
 import ClearNameButton from '../../src/clear_name_button'
 import NestedFields from '../../src/nested_fields'
+import AdditionalInfoToggle from '../../src/additional_info_toggle'
 
 describe('<MyForm/>', () => {
   const onSubmitSpy = jasmine.createSpy('onSubmit')
-  const wrapper = mount(<MyForm onSubmit={onSubmitSpy}/>)
-  const getFormState = () => {
-    return wrapper.find(Provider).props().store.getState().forms.DOG_FORM_KEY
-  }
-
-  const simulateChangeEvent = (reactWrapper, value) => {
-    reactWrapper.simulate('change', { target: { value }})
-  }
+  let wrapper, getFormState, simulateChangeEvent
 
   beforeEach((done) => {
+    wrapper = mount(<MyForm onSubmit={onSubmitSpy}/>)
+    getFormState = () => {
+      return wrapper.find(Provider).props().store.getState().forms.DOG_FORM_KEY
+    }
+
+    simulateChangeEvent = (reactWrapper, value) => {
+      reactWrapper.simulate('change', { target: { value }})
+    }
+
     const nameInput = wrapper.find('input#dog_owner_name')
     simulateChangeEvent(nameInput, 'Fran')
 
@@ -45,6 +48,9 @@ describe('<MyForm/>', () => {
     const interestsInput = wrapper.find('input#dog_owner_interests')
     interestsInput.simulate('change', { target: { value: ['fetch'] }})
 
+    const additionalInfoInput = wrapper.find('textarea#dog_additional_info')
+    simulateChangeEvent(additionalInfoInput, 'I like dogs')
+
     // Necessary because SimpleInput fields debounce input
     setTimeout(done, 300);
   });
@@ -64,8 +70,9 @@ describe('<MyForm/>', () => {
         interests: ['fetch'],
         agencies: [
           { name: 'Some Agency' }
-        ]
+        ],
       },
+      additional_info: 'I like dogs',
       errors: [
         { attribute: "base", message: "test base error" },
         { attribute: "some_other_attribute", message: "test other error" }
@@ -80,6 +87,14 @@ describe('<MyForm/>', () => {
 
   it('updates Greeter component', () => {
     expect(wrapper.find(Greeter).text()).toContain('Fran')
+  })
+
+  describe('<AdditionalInfoToggle/>', () => {
+    it('removes field from state when unrendered', () => {
+      const additionalInfo = wrapper.find(AdditionalInfoToggle)
+      additionalInfo.find('button.additional-info-toggle').simulate('click')
+      expect(getFormState().additional_info).toBe(null)
+    })
   })
 
   describe('<FakeMultiSelectInput/>', () => {
