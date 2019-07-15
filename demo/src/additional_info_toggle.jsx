@@ -18,6 +18,7 @@ class AdditionalInfoToggle extends React.Component {
             <Field
               for="additional_info"
               label="Additional Info"
+              clearStateOnUnmount={true}
               input={TextAreaInput}
             />
         )}
