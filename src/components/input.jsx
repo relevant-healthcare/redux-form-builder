@@ -41,8 +41,13 @@ class CheckboxInput extends React.Component {
   }
 }
 
-function TextAreaInput(props) {
-  return <textarea {...props} />
+class TextAreaInput extends React.Component {
+  render() {
+    let { className, ...otherProps } = this.props
+    className = className || 'input form-control'
+
+    return <textarea className={className} {...otherProps} />
+  }
 }
 
 function SelectInput({ options, ...props }) {
