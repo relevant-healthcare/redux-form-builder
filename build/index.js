@@ -23371,34 +23371,18 @@ module.exports =
 	  return CheckboxInput;
 	}(_react2.default.Component);
 
-	var TextAreaInput = function (_React$Component3) {
-	  _inherits(TextAreaInput, _React$Component3);
+	function TextAreaInput(_ref2) {
+	  var className = _ref2.className,
+	      otherProps = _objectWithoutProperties(_ref2, ['className']);
 
-	  function TextAreaInput() {
-	    _classCallCheck(this, TextAreaInput);
+	  className = className || 'input form-control';
 
-	    return _possibleConstructorReturn(this, (TextAreaInput.__proto__ || Object.getPrototypeOf(TextAreaInput)).apply(this, arguments));
-	  }
+	  return _react2.default.createElement('textarea', _extends({ className: className }, otherProps));
+	}
 
-	  _createClass(TextAreaInput, [{
-	    key: 'render',
-	    value: function render() {
-	      var _props3 = this.props,
-	          className = _props3.className,
-	          otherProps = _objectWithoutProperties(_props3, ['className']);
-
-	      className = className || 'input form-control';
-
-	      return _react2.default.createElement('textarea', _extends({ className: className }, otherProps));
-	    }
-	  }]);
-
-	  return TextAreaInput;
-	}(_react2.default.Component);
-
-	function SelectInput(_ref2) {
-	  var options = _ref2.options,
-	      props = _objectWithoutProperties(_ref2, ['options']);
+	function SelectInput(_ref3) {
+	  var options = _ref3.options,
+	      props = _objectWithoutProperties(_ref3, ['options']);
 
 	  var className = props.className,
 	      value = props.value,
@@ -23411,9 +23395,9 @@ module.exports =
 	  return _react2.default.createElement(
 	    'select',
 	    _extends({}, propsWithDefaults, otherProps),
-	    options.map(function (_ref3) {
-	      var name = _ref3.name,
-	          value = _ref3.value;
+	    options.map(function (_ref4) {
+	      var name = _ref4.name,
+	          value = _ref4.value;
 
 	      return _react2.default.createElement(
 	        'option',
@@ -23424,8 +23408,8 @@ module.exports =
 	  );
 	}
 
-	var RadioButtonGroupInput = function (_React$Component4) {
-	  _inherits(RadioButtonGroupInput, _React$Component4);
+	var RadioButtonGroupInput = function (_React$Component3) {
+	  _inherits(RadioButtonGroupInput, _React$Component3);
 
 	  function RadioButtonGroupInput() {
 	    _classCallCheck(this, RadioButtonGroupInput);
@@ -23436,21 +23420,21 @@ module.exports =
 	  _createClass(RadioButtonGroupInput, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this5 = this;
+	      var _this4 = this;
 
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'radio-btn-group', id: this.id },
 	        this.props.options.map(function (option, index) {
-	          var inputId = _this5.id + '_' + _underscore2.default.underscored(option.value);
+	          var inputId = _this4.id + '_' + _underscore2.default.underscored(option.value);
 	          return [_react2.default.createElement('input', {
 	            key: index + '-input',
 	            type: 'radio',
 	            value: option.value,
-	            name: _this5.props.name,
+	            name: _this4.props.name,
 	            id: inputId,
-	            checked: option.value === _this5.props.value,
-	            onChange: _this5.props.onChange
+	            checked: option.value === _this4.props.value,
+	            onChange: _this4.props.onChange
 	          }), _react2.default.createElement(
 	            'label',
 	            { className: 'btn btn-default', htmlFor: inputId, key: index + '-label' },
