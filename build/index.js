@@ -23371,13 +23371,18 @@ module.exports =
 	  return CheckboxInput;
 	}(_react2.default.Component);
 
-	function TextAreaInput(props) {
-	  return _react2.default.createElement('textarea', props);
+	function TextAreaInput(_ref2) {
+	  var className = _ref2.className,
+	      otherProps = _objectWithoutProperties(_ref2, ['className']);
+
+	  className = className || 'input form-control';
+
+	  return _react2.default.createElement('textarea', _extends({ className: className }, otherProps));
 	}
 
-	function SelectInput(_ref2) {
-	  var options = _ref2.options,
-	      props = _objectWithoutProperties(_ref2, ['options']);
+	function SelectInput(_ref3) {
+	  var options = _ref3.options,
+	      props = _objectWithoutProperties(_ref3, ['options']);
 
 	  var className = props.className,
 	      value = props.value,
@@ -23390,9 +23395,9 @@ module.exports =
 	  return _react2.default.createElement(
 	    'select',
 	    _extends({}, propsWithDefaults, otherProps),
-	    options.map(function (_ref3) {
-	      var name = _ref3.name,
-	          value = _ref3.value;
+	    options.map(function (_ref4) {
+	      var name = _ref4.name,
+	          value = _ref4.value;
 
 	      return _react2.default.createElement(
 	        'option',
@@ -25301,7 +25306,7 @@ module.exports =
 	    value: function render() {
 	      var Control = this.control;
 	      var sharedProps = this.sharedProps;
-	      var inputProps = _lodash2.default.assign({ className: 'form-control' }, sharedProps, this.props.inputProps);
+	      var inputProps = _lodash2.default.assign({}, sharedProps, this.props.inputProps);
 	      return _react2.default.createElement(
 	        'div',
 	        { onChange: function onChange(e) {

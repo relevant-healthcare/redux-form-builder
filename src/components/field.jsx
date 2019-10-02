@@ -80,7 +80,7 @@ class Field extends React.Component {
   render() {
     const Control = this.control
     const sharedProps = this.sharedProps
-    const inputProps = _.assign({ className: 'form-control' }, sharedProps, this.props.inputProps)
+    const inputProps = _.assign({ }, sharedProps, this.props.inputProps)
     return <div onChange={(e) => e.stopPropagation()}>
       <Control
         errors={this.errors}
