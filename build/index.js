@@ -22855,6 +22855,16 @@ module.exports =
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
+	function _toConsumableArray(arr) {
+	  if (Array.isArray(arr)) {
+	    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+	      arr2[i] = arr[i];
+	    }return arr2;
+	  } else {
+	    return Array.from(arr);
+	  }
+	}
+
 	function _defineProperty(obj, key, value) {
 	  if (key in obj) {
 	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
@@ -22882,7 +22892,10 @@ module.exports =
 	    var command = _lodash2.default.reduceRight(path, function (command, component) {
 	      return _defineProperty({}, component, command);
 	    }, { $merge: value });
-	    return (0, _immutabilityHelper2.default)(state, _defineProperty({}, formKey, command));
+	    if (_lodash2.default.get(state, [formKey].concat(_toConsumableArray(path)))) {
+	      return (0, _immutabilityHelper2.default)(state, _defineProperty({}, formKey, command));
+	    }
+	    return state;
 	  }), _handlers);
 
 	  if (handlers.hasOwnProperty(action.type)) {

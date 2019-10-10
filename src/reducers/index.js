@@ -15,7 +15,10 @@ export default function formReducer(state = {}, action) {
         (command, component) => { return { [component]: command } },
         { $merge: value }
       )
-      return update(state, { [formKey]: command })
+      if (_.get(state, [formKey, ...path])) {
+        return update(state, { [formKey]: command })
+      }
+      return state
     }
   }
 
