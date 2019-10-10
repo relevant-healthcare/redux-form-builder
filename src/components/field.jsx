@@ -49,7 +49,12 @@ class Field extends React.Component {
 
   onChange = (event) => {
     if (event.stopPropagation) { event.stopPropagation() }
-    this.props.onChange({ [this.localName]: event.target.value })
+
+    let updateObj = { [this.localName]: event.target.value };
+    if (this.props.onChangeModifier) {
+      updateObj = this.props.onChangeModifier(updateObj)
+    }
+    this.props.onChange(updateObj)
   }
 
   get control() {

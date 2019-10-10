@@ -25290,7 +25290,12 @@ module.exports =
 	      if (event.stopPropagation) {
 	        event.stopPropagation();
 	      }
-	      _this.props.onChange(_defineProperty({}, _this.localName, event.target.value));
+
+	      var updateObj = _defineProperty({}, _this.localName, event.target.value);
+	      if (_this.props.onChangeModifier) {
+	        updateObj = _this.props.onChangeModifier(updateObj);
+	      }
+	      _this.props.onChange(updateObj);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
