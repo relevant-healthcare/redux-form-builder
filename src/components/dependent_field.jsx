@@ -18,4 +18,4 @@ function DependentField({ dependentStateValues, shouldRender, ...otherProps }) {
 
 export default formScopedStateWrapper((object, { dependsOn }) => ({
   dependentStateValues: dependsOn.map(key => object[key])
-}))(formContextWrapper(({ baseRemotePath, baseLocalPath }) => ({ baseRemotePath, baseLocalPath }))(DependentField))
+})(DependentField))
