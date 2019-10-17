@@ -6,7 +6,7 @@ function DependentField({ dependentStateValues, shouldRender, ...otherProps }) {
   const localName = otherProps['for'] // ...this is why you don't name args the same thing as language reserved keywords
   if (!shouldRender(...dependentStateValues)) {
     this.props.onChange({ [localName]: undefined })
-    return null;
+    return false;
   }
 
   return (

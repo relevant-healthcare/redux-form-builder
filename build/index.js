@@ -25452,7 +25452,7 @@ module.exports =
 	  var localName = otherProps['for']; // ...this is why you don't name args the same thing as language reserved keywords
 	  if (!shouldRender.apply(undefined, _toConsumableArray(dependentStateValues))) {
 	    this.props.onChange(_defineProperty({}, localName, undefined));
-	    return null;
+	    return false;
 	  }
 
 	  return _react2.default.createElement(Field, otherProps);
