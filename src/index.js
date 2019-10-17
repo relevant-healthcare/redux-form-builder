@@ -7,6 +7,7 @@ import {
 } from './components/control'
 import ErrorMessages from './components/error_messages'
 import Field from './components/field'
+import DependentField from './components/dependent_field'
 import Fields from './components/fields'
 import {
   CheckboxInput,
@@ -30,6 +31,7 @@ export {
   CheckboxInput,
   DateInput,
   ErrorMessages,
+  DependentField,
   Field,
   Fields,
   formsReducer,

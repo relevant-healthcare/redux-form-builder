@@ -50,7 +50,7 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.UPDATE_FORM_OBJECT = exports.updateFormObject = exports.UnlabeledControl = exports.TextInput = exports.TextAreaInput = exports.SET_FORM_OBJECT = exports.setFormObject = exports.SelectInput = exports.RadioButtonGroupInput = exports.LabeledControl = exports.HiddenInput = exports.HiddenControl = exports.formScopedStateWrapper = exports.formsReducer = exports.Fields = exports.Field = exports.ErrorMessages = exports.DateInput = exports.CheckboxInput = undefined;
+	exports.UPDATE_FORM_OBJECT = exports.updateFormObject = exports.UnlabeledControl = exports.TextInput = exports.TextAreaInput = exports.SET_FORM_OBJECT = exports.setFormObject = exports.SelectInput = exports.RadioButtonGroupInput = exports.LabeledControl = exports.HiddenInput = exports.HiddenControl = exports.formScopedStateWrapper = exports.formsReducer = exports.Fields = exports.Field = exports.DependentField = exports.ErrorMessages = exports.DateInput = exports.CheckboxInput = undefined;
 
 	var _form = __webpack_require__(1);
 
@@ -70,7 +70,11 @@ module.exports =
 
 	var _field2 = _interopRequireDefault(_field);
 
-	var _fields = __webpack_require__(133);
+	var _dependent_field = __webpack_require__(133);
+
+	var _dependent_field2 = _interopRequireDefault(_dependent_field);
+
+	var _fields = __webpack_require__(134);
 
 	var _fields2 = _interopRequireDefault(_fields);
 
@@ -90,6 +94,7 @@ module.exports =
 	exports.CheckboxInput = _input.CheckboxInput;
 	exports.DateInput = _input.DateInput;
 	exports.ErrorMessages = _error_messages2.default;
+	exports.DependentField = _dependent_field2.default;
 	exports.Field = _field2.default;
 	exports.Fields = _fields2.default;
 	exports.formsReducer = _reducers2.default;
@@ -25411,6 +25416,63 @@ module.exports =
 
 /***/ }),
 /* 133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _form_context_wrapper = __webpack_require__(50);
+
+	var _form_context_wrapper2 = _interopRequireDefault(_form_context_wrapper);
+
+	var _form_scoped_state_wrapper = __webpack_require__(52);
+
+	var _form_scoped_state_wrapper2 = _interopRequireDefault(_form_scoped_state_wrapper);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	function DependentField(_ref) {
+	  var dependentStateValues = _ref.dependentStateValues,
+	      shouldRender = _ref.shouldRender,
+	      otherProps = _objectWithoutProperties(_ref, ['dependentStateValues', 'shouldRender']);
+
+	  var localName = otherProps['for']; // ...this is why you don't name args the same thing as language reserved keywords
+	  if (!shouldRender.apply(undefined, _toConsumableArray(dependentStateValues))) {
+	    this.props.onChange(_defineProperty({}, localName, undefined));
+	    return null;
+	  }
+
+	  return _react2.default.createElement(Field, otherProps);
+	}
+
+	exports.default = (0, _form_scoped_state_wrapper2.default)(function (object, _ref2) {
+	  var dependsOn = _ref2.dependsOn;
+	  return {
+	    dependentStateValues: dependsOn.map(function (key) {
+	      return object[key];
+	    })
+	  };
+	})((0, _form_context_wrapper2.default)(function (_ref3) {
+	  var baseRemotePath = _ref3.baseRemotePath,
+	      baseLocalPath = _ref3.baseLocalPath;
+	  return { baseRemotePath: baseRemotePath, baseLocalPath: baseLocalPath }(DependentField);
+	}));
+
+/***/ }),
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
