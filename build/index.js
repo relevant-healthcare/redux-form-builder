@@ -25468,8 +25468,8 @@ module.exports =
 	})((0, _form_context_wrapper2.default)(function (_ref3) {
 	  var baseRemotePath = _ref3.baseRemotePath,
 	      baseLocalPath = _ref3.baseLocalPath;
-	  return { baseRemotePath: baseRemotePath, baseLocalPath: baseLocalPath }(DependentField);
-	}));
+	  return { baseRemotePath: baseRemotePath, baseLocalPath: baseLocalPath };
+	})(DependentField));
 
 /***/ }),
 /* 134 */
