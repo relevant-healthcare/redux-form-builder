@@ -25424,6 +25424,8 @@ module.exports =
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -25459,12 +25461,14 @@ module.exports =
 	}
 
 	exports.default = (0, _form_scoped_state_wrapper2.default)(function (object, _ref2) {
-	  var dependsOn = _ref2.dependsOn;
-	  return {
+	  var dependsOn = _ref2.dependsOn,
+	      otherProps = _objectWithoutProperties(_ref2, ['dependsOn']);
+
+	  return _extends({
 	    dependentStateValues: dependsOn.map(function (key) {
 	      return object[key];
 	    })
-	  }(DependentField);
+	  }, otherProps)(DependentField);
 	});
 
 /***/ }),
