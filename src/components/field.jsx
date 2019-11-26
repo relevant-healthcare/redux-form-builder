@@ -63,7 +63,9 @@ class Field extends React.Component {
 
   get errors() {
     const errorAttribute = s.underscored(this.remoteName)
-    return _.filter(this.props.errors, (error) => { return error.attribute === errorAttribute })
+    return _.filter(this.props.errors, (error) => (
+      (error.attribute === errorAttribute) || (error.attribute === this.props.errorKey)
+    ))
   }
 
   get sharedProps() {
