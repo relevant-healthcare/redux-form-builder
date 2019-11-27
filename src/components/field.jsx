@@ -64,7 +64,7 @@ class Field extends React.Component {
   get errors() {
     const errorAttribute = s.underscored(this.remoteName)
     return _.filter(this.props.errors, (error) => (
-      (error.attribute === errorAttribute) || (error.attribute === this.props.errorKey)
+      error.attribute && ((error.attribute === errorAttribute) || (error.attribute === this.props.errorKey))
     ))
   }
 

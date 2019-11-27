@@ -25387,7 +25387,7 @@ module.exports =
 
 	      var errorAttribute = _underscore2.default.underscored(this.remoteName);
 	      return _lodash2.default.filter(this.props.errors, function (error) {
-	        return error.attribute === errorAttribute || error.attribute === _this2.props.errorKey;
+	        return error.attribute && (error.attribute === errorAttribute || error.attribute === _this2.props.errorKey);
 	      });
 	    }
 	  }, {
