@@ -25383,9 +25383,11 @@ module.exports =
 	  }, {
 	    key: 'errors',
 	    get: function get() {
+	      var _this2 = this;
+
 	      var errorAttribute = _underscore2.default.underscored(this.remoteName);
 	      return _lodash2.default.filter(this.props.errors, function (error) {
-	        return error.attribute === errorAttribute;
+	        return error.attribute && (error.attribute === errorAttribute || error.attribute === _this2.props.errorKey);
 	      });
 	    }
 	  }, {
