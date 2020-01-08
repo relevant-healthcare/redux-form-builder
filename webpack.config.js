@@ -30,7 +30,6 @@ module.exports = {
     new webpack.EnvironmentPlugin(['NODE_ENV'])
   ],
   externals: {
-    react: 'react',
-    lodash: 'lodash'
+    react: 'react'
   }
 }
