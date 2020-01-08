@@ -1,5 +1,6 @@
 import React from 'react'
-import _ from 'lodash'
+import filter from 'lodash/filter'
+import some from 'lodash/some'
 import formScopedStateWrapper from '../containers/form_scoped_state_wrapper'
 
 class ErrorMessages extends React.Component {
@@ -8,11 +9,11 @@ class ErrorMessages extends React.Component {
   }
 
   get baseErrors() {
-    return _.filter(this.errors, (error) => { return error.attribute == 'base' })
+    return filter(this.errors, (error) => { return error.attribute == 'base' })
   }
 
   get hasErrors() {
-    return _.some(this.errors)
+    return some(this.errors)
   }
 
   render() {

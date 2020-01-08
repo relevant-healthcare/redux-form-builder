@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import pick from 'lodash/pick'
 
 class FormContextWrapper extends React.Component {
   get baseLocalPath() {
@@ -16,7 +16,7 @@ class FormContextWrapper extends React.Component {
   }
 
   get formContextState() {
-    return _.pick(this, 'baseLocalPath', 'baseRemotePath', 'formKey')
+    return pick(this, 'baseLocalPath', 'baseRemotePath', 'formKey')
   }
 
   render() {

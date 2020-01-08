@@ -1,12 +1,12 @@
 import React from 'react'
 import s from 'underscore.string'
-import _ from 'lodash'
+import debounce from 'lodash/debounce'
 
 function SimpleInput(type) {
   return class extends React.Component {
     constructor(props) {
       super(props)
-      this.debouncedOnChange = _.debounce(this.props.onChange || function(){}, 200)
+      this.debouncedOnChange = debounce(this.props.onChange || function(){}, 200)
     }
 
     onChange = (event) => {

@@ -1,6 +1,8 @@
 import React from 'react'
 import s from 'underscore.string'
-import _ from 'lodash'
+import assign from 'lodash/assign'
+import drop from 'lodash/drop'
+import filter from 'lodash/filter'
 import formContextWrapper from '../containers/form_context_wrapper'
 import formScopedStateWrapper from '../containers/form_scoped_state_wrapper'
 import { LabeledControl } from './control'
@@ -37,7 +39,7 @@ class Field extends React.Component {
 
   get inputName() {
     const first = s.underscored(this.pathRoot)
-    const rest = _.drop(this.fullRemotePath)
+    const rest = drop(this.fullRemotePath)
     const indexedRest = rest.map(n => { return `[${s.underscored(n)}]` })
 
     return `${first}${s.join('', ...indexedRest)}`
@@ -63,7 +65,7 @@ class Field extends React.Component {
 
   get errors() {
     const errorAttribute = s.underscored(this.remoteName)
-    return _.filter(this.props.errors, (error) => (
+    return filter(this.props.errors, (error) => (
       error.attribute && ((error.attribute === errorAttribute) || (error.attribute === this.props.errorKey))
     ))
   }
@@ -87,7 +89,7 @@ class Field extends React.Component {
   render() {
     const Control = this.control
     const sharedProps = this.sharedProps
-    const inputProps = _.assign({ }, sharedProps, this.props.inputProps)
+    const inputProps = assign({ }, sharedProps, this.props.inputProps)
     return <div onChange={(e) => e.stopPropagation()}>
       <Control
         errors={this.errors}

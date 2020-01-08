@@ -1,6 +1,5 @@
 import React from 'react'
 import s from 'underscore.string'
-import _ from 'lodash'
 
 class FakeMultiSelectInput extends React.Component {
   render() {

@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import fieldSetWrapper from '../containers/field_set_wrapper'
 import formScopedStateWrapper from '../containers/form_scoped_state_wrapper'
 import { setFormObject } from '../actions/index'
-import _ from 'lodash'
+import isEqual from 'lodash/isEqual'
+import pick from 'lodash/pick'
+import omit from 'lodash/omit'
 
 class Form extends React.Component {
   get isPersisted() {
@@ -24,7 +26,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const htmlFormProps = _.pick(this.props, 'className', 'onChange', 'encType')
+    const htmlFormProps = pick(this.props, 'className', 'onChange', 'encType')
 
     return <form action={this.action} method="post" {...htmlFormProps} onSubmit={this.onSubmit}>
       <input name="utf8" type="hidden" value="✓" />
@@ -54,16 +56,16 @@ class FormInitializer extends React.Component {
     }
 
     if (
-      !_.isEqual(this.props['for'], props['for']) ||
-      !_.isEqual(this.props.formKey, props.formKey) ||
-      !_.isEqual(this.props.as, props.as)
+      !isEqual(this.props['for'], props['for']) ||
+      !isEqual(this.props.formKey, props.formKey) ||
+      !isEqual(this.props.as, props.as)
     ) {
       this.props.setFormObject(props.formKey || props.as, props['for'])
     }
   }
 
   render() {
-    const childProps = _.omit(this.props, 'setFormObject')
+    const childProps = omit(this.props, 'setFormObject')
     return <FormFieldSet {...childProps} />
   }
 }

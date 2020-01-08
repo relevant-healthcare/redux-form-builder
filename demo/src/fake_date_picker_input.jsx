@@ -1,5 +1,4 @@
 import React from 'react'
-import _ from 'lodash'
 
 class FakeDatePickerInput extends React.Component {
   state = {

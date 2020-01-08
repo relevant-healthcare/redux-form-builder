@@ -1,6 +1,6 @@
 import update from 'immutability-helper'
 import { SET_FORM_OBJECT, UPDATE_FORM_OBJECT } from '../actions/index'
-import _ from 'lodash'
+import reduceRight from 'lodash/reduceRight'
 
 export default function formReducer(state = {}, action) {
   const handlers = {
@@ -10,7 +10,7 @@ export default function formReducer(state = {}, action) {
     },
     [UPDATE_FORM_OBJECT]: () => {
       const { formKey, path, value } = action
-      const command = _.reduceRight(
+      const command = reduceRight(
         path,
         (command, component) => { return { [component]: command } },
         { $merge: value }

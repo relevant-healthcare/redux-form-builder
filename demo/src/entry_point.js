@@ -3,7 +3,6 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { formsReducer } from '../../build/index'
-import _ from 'lodash'
 
 class EntryPoint extends React.Component {
   get store() {
