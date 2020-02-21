@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack')
 
 module.exports = {
   mode: 'production',
@@ -24,5 +25,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
-  }
+  },
+  plugins: [
+    new webpack.EnvironmentPlugin(['NODE_ENV'])
+  ]
 }
